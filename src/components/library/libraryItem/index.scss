@@ -1,0 +1,67 @@
+#video-component {
+  .video-item {
+    margin: 10px auto;
+    width: 80%;
+    border: 1px solid #eee;
+    background: #d3d3d329;
+  }
+
+  .video-row {
+    margin-bottom: -5px;
+  }
+
+  .col-last-edited-date {
+    z-index: -1;
+  }
+
+  .div-last-edited-date {
+    width: 80%;
+    margin: 0px auto;
+    text-align: right !important;
+  }
+
+  // .VideoRow{
+  //   align-items: center;
+  //   padding: 16px;
+  // }
+  // .VideoFrame{
+  //   width:200px;
+  //   height: 100px;
+  // }
+  // .NotesCounter{
+  //   display: -webkit-inline-box;
+  // }
+  .title-notes {
+    color: #6c757d;
+  }
+
+  .notes-icon {
+    margin-right: 5px;
+    color: gray;
+  }
+
+  .video {
+    width: inherit;
+  }
+
+  .title {
+    align-self: center;
+    text-align: center !important;
+  }
+
+  .notes {
+    display: flex;
+    align-items: center;
+    place-content: center;
+  }
+
+  .actions {
+    display: flex;
+    align-items: center;
+    place-content: center;
+  }
+
+  .modal-footer {
+    place-content: center;
+  }
+}

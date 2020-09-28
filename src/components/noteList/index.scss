@@ -1,0 +1,21 @@
+.notes {
+  .addNoteButton {
+    position: relative;
+    left: 50%;
+    font-size: 2em;
+  }
+  .goToTimeButton {
+    float: right;
+  }
+  .noteCard {
+    margin-top: 1em;
+    margin-bottom: 1em;
+  }
+  .time {
+    font-size: 0.8em;
+    float: right;
+  }
+  .textarea {
+    margin-bottom: 0.5em;
+  }
+}

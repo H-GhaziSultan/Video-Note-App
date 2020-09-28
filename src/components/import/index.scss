@@ -1,0 +1,20 @@
+#import-div {
+  margin: 20px auto;
+  width: 60%;
+  box-shadow: 0 2px 3px #ccc;
+  border: 1px solid #eee;
+  padding: 10px;
+  box-sizing: border-box;
+}
+.file-feedback-div {
+  display: none;
+}
+.file-feedback-div-show {
+  width: 100%;
+  margin-top: 0.25rem;
+  font-size: 80%;
+  color: #dc3545;
+}
+#import-form-heading {
+  text-align-last: center;
+}

@@ -1,0 +1,86 @@
+stages:
+  - check
+  - test
+  - build
+  - docker
+
+evaluate-styling:
+  image: node:lts-alpine
+  stage: check
+  cache:
+    key: ${CI_JOB_NAME}
+    paths:
+      - node_modules/
+  tags:
+    - node
+  script:
+    - npm install
+    - npx prettier --check "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}"
+    - npx eslint --max-warnings 3 "src/**/*.{js,jsx,ts,tsx}"
+
+run-unit-test:
+  image: node:lts-alpine
+  stage: test
+  cache:
+    key: ${CI_JOB_NAME}
+    paths:
+    - node_modules/
+  tags:
+    - test
+    - node
+  script:
+    - npm install
+    - npm test
+
+build:
+  image: node:lts-alpine
+  stage: build
+  cache:
+    key: ${CI_JOB_NAME}
+    paths:
+      - node_modules/
+  tags:
+    - node
+  script:
+    - npm install
+    - npm run build
+  artifacts:
+    name: "$CI_JOB_NAME-$CI_COMMIT_REF_NAME"
+    paths:
+      - build/
+    expire_in: 1 week
+
+docker-build-manual:
+  image: docker:19.03.11
+  variables:
+    DOCKER_TLS_CERTDIR: "/certs"
+  stage: docker
+  tags:
+    - docker
+  services:
+    - docker:19.03.11-dind
+  before_script:
+    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+  script:
+    - docker build --pull -t "$CI_REGISTRY_IMAGE":"$CI_COMMIT_REF_SLUG" .
+    - docker push "$CI_REGISTRY_IMAGE":"$CI_COMMIT_REF_SLUG"
+  when: manual
+  except:
+    - master
+
+docker-build-master:
+  image: docker:19.03.11
+  variables:
+    DOCKER_TLS_CERTDIR: "/certs"
+  stage: docker
+  tags:
+    - docker
+  services:
+    - docker:19.03.11-dind
+  before_script:
+    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+  script:
+    - docker build --pull -t "$CI_REGISTRY_IMAGE":latest .
+    - docker push "$CI_REGISTRY_IMAGE":latest
+  only:
+    - master

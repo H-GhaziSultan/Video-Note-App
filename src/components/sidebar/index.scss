@@ -1,0 +1,47 @@
+.navTop {
+  display: flex;
+  align-items: center;
+}
+
+.closeBtn {
+  cursor: pointer;
+}
+
+.sidebarAnimClose {
+  transform: translateX(-75%) !important;
+  transition: all 1s 0.1s !important;
+}
+
+.sidebarAnimOpen {
+  transform: translateX(60%);
+  transition: all 1s 0.1s !important;
+}
+
+#sidebar-wrapper {
+  min-height: 100vh !important;
+  width: 100vw;
+  margin-left: -1rem;
+  -webkit-transition: margin 0.25s ease-out;
+  -moz-transition: margin 0.25s ease-out;
+  -o-transition: margin 0.25s ease-out;
+  transition: margin 0.25s ease-out;
+  transform: translateX(0%);
+}
+
+#wrapper.toggled #sidebar-wrapper {
+  margin-left: -15rem;
+}
+
+#sidebar-wrapper .sidebar-heading {
+  padding: 0.875rem 1.25rem;
+  font-size: 1.2rem;
+}
+
+#sidebar-wrapper {
+  width: 15rem;
+}
+
+#page-content-wrapper {
+  min-width: 0;
+  width: 100%;
+}
