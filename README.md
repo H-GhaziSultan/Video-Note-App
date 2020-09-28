@@ -1,7 +1,7 @@
 # Video Note App
 
 This is a semester based project created in Web 2.0 summer term 2020. We have developed a Prototype using ReactJs, Typescript, React bootstrap, indexeddb and NodeJs whose target audience is students who can upload videos and make private notes.
-All the users’ data is saved locally in Indexeddb.This is the video note app created by group 3 in Web 2.0 summer term 2020.
+All the users’ data is saved locally in Indexeddb.
 
 ## Info by Create React App
 
